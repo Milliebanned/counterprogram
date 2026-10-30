@@ -559,7 +559,8 @@ const TOOLS: FunctionDeclaration[] = [
 ];
 
 // Free-tier Gemini capacity varies by model; fall back down this list on overload or timeout.
-const MODELS = [process.env.GEMINI_MODEL || "gemini-3.5-flash", "gemini-3.5-flash-lite"];
+// Each model has its own free daily quota, so more fallbacks = more free runs.
+const MODELS = [process.env.GEMINI_MODEL || "gemini-3.5-flash", "gemini-3.5-flash-lite", "gemini-3.1-flash-lite"];
 const MODEL = MODELS[0];
 
 const describe = (f: FilmInput) => `Film: ${f.title}\nLogline: ${f.logline}\nComparable titles: ${f.comps.join("; ")}\nRelease window: ${f.start} to ${f.end} (US theatrical)`;
